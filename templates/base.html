@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Tau Beta Pi{% endblock title %}</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+    {% load static %}
+    {% load compress %}
+    {% compress css %}
+        <link type="text/x-scss" href="{% static 'portal/style.scss' %}" rel="stylesheet" media="screen">
+    {% endcompress %}
+
+</head>
+<body>
+    {% block navbar %}
+        <nav class="navbar navbar-expand-sm navbar-dark px-5">
+            <a class="navbar-brand" href="/">
+                <img src="{% static 'images/white_circle_logo.png' %}">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Example</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Example</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Example</a>
+                    </li>
+                </ul>
+                {% if user.is_authenticated and user.is_active %}
+                <form class="form-inline my-2 my-lg-0 d-flex">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn_primary my-2 my-sm-0 ms-1 me-3" type="submit">Search</button>
+                    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+                </form>
+                {% endif %}
+            </div>
+        </nav>
+    {% endblock navbar%}
+
+{% block page_content %}{% endblock page_content %}
+</body>
+</html>

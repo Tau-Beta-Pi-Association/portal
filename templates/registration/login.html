@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<script src="{% static 'js-recaptcha-refresh.js' %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        jsRecaptchaRefresh();
+    });  
+</script>
+
+{% for message in messages%}
+<div class="message {{message.tags}}">
+    {{message}}
+</div>
+{% endfor %}
+
+{% if form.non_field_errors %}
+    <div class = "message error">
+        {% for error in form.non_field_errors %}
+            {{error}}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="container">
+    <div class="shadow p-4 mb-5 bg-body rounded w-50 mx-auto mt-5">
+        <h1>Log In</h1>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="my-4">
+                {{ form.username.label_tag }}
+                <br/>
+                {{ form.username }}
+                {{ form.username.help_text }}
+                {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="my-4">
+                {{ form.password.label_tag }}
+                <br/>
+                {{ form.password}}
+                {{ form.password.help_text }}
+                {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="my-4">
+                {{ form.captcha }}
+            </div>
+            <br/>
+            <br/>
+            <button type="submit" class="btn btn-primary">Log In</button> <a class="btn btn-secondary" href="{% url 'password_reset' %}">Reset Password</a>
+        </form>
+    </div>
+</div>
+
+{% endblock page_content %}

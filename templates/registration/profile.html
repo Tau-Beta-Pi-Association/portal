@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block page_content%}
+
+{% for message in messages%}
+<div class="message {{message.tags}}">
+    {{message}}
+</div>
+{% endfor %}
+
+<div class="container">
+    <div class="shadow p-4 mb-5 mt-5 mx-auto w-50 bg-body rounded text-center">
+        <h5>Proile Page.</h5>
+        <p>Hello, {{ user.username }}, {{ user.email }}</p>
+    </div>    
+</div>
+
+{% endblock page_content %}

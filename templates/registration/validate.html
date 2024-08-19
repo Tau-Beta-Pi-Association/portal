@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="container">
+    <div class="shadow p-4 mb-5 bg-body rounded w-50 mx-auto mt-5">
+        <h1>Validate</h1>
+        <form method="post" action="{% url 'validate' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br/>
+            <br/>
+            <button type="submit" class="btn btn-primary">Validate</button>
+        </form>
+    </div>
+</div>
+
+{% endblock page_content %}

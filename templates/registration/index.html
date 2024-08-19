@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block page_content%}
+
+{% for message in messages%}
+<div class="message {{message.tags}}">
+    {{message}}
+</div>
+{% endfor %}
+
+<div class="container">
+    <div class="shadow p-4 mb-5 mt-5 mx-auto w-50 bg-body rounded text-center">
+        {% if user.is_authenticated %}
+            <h5>Welcome, {{user.username}}. Thanks for logging in.</h5>
+        {% else %}
+            <h5>Welcome to Tau Beta Pi's Portal.</h5>
+            <a href="{% url 'login' %}">Log In</a> or <a href="{% url 'verify' %}">Register</a>
+            <br/>
+            <a href="{% url 'password_reset' %}">Forgot your password?</a>
+        {% endif %}
+    </div>    
+</div>
+
+{% endblock page_content %}

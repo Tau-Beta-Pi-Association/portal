@@ -1,0 +1,31 @@
+/* line 1, c:/users/r.hubbuck/desktop/test/static/portal/style.scss */
+.message {
+  padding: 1.2rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.4 rem;
+  margin-bottom: 1rem;
+  color: white; }
+  /* line 9, c:/users/r.hubbuck/desktop/test/static/portal/style.scss */
+  .message.success {
+    background-color: #28a745; }
+  /* line 13, c:/users/r.hubbuck/desktop/test/static/portal/style.scss */
+  .message.error {
+    background-color: #d13443; }
+
+/* line 18, c:/users/r.hubbuck/desktop/test/static/portal/style.scss */
+.navbar {
+  background-color: #284080; }
+
+/* line 22, c:/users/r.hubbuck/desktop/test/static/portal/style.scss */
+.navbar-brand img {
+  height: 70px;
+  width: 70px; }
+
+/* line 27, c:/users/r.hubbuck/desktop/test/static/portal/style.scss */
+.register_form_phone_container {
+  display: flex;
+  flex-direction: row; }
+  /* line 31, c:/users/r.hubbuck/desktop/test/static/portal/style.scss */
+  .register_form_phone_container:first-child {
+    width: auto; }
